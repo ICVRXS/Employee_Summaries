@@ -42,11 +42,39 @@ const managerQuestions = [
     }
 ]
 
+const engineerQuestions = [
+    {
+    type: "input",
+    message: "What is your GitHub name?",
+    name: "githubName"
+    }
+]
+
+const internQuestions = [
+    {
+    type: "input",
+    message: "What school do you go to?",
+    name: "internSchool"
+    }
+]
+
 inquirer.prompt(role).then((response)=>{
     console.log(response);
     if(response.userRole === "Manager"){
         console.log("You Are a Manager");
         inquirer.prompt(managerQuestions).then((response)=>{
+
+        })
+    }
+    if(response.userRole === "Engineer"){
+        console.log("You are an Engineer");
+        inquirer.prompt(engineerQuestions).then((response)=>{
+            
+        })
+    }
+    if(response.userRole === "Intern"){
+        console.log("You are an Intern");
+        inquirer.prompt(internQuestions).then((response)=>{
             
         })
     }
