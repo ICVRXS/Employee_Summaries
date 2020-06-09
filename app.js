@@ -16,11 +16,40 @@ const role = [
     message: "What is your role in the company?",
     choices: ["Manager", "Engineer", "Intern"],
     name: "userRole"
+    },
+    {
+    type: "input",
+    message: "What is your name?",
+    name: "userName"
+    },
+    {
+    type: "input",
+    message: "What is your id number?",
+    name: "userId"
+    },
+    {
+    type: "input",
+    message: "What is your email address?",
+    name: "userEmail"
+    }
+]
+
+const managerQuestions = [
+    {
+    type: "input",
+    message: "What is your office number?",
+    name: "officeNumber"
     }
 ]
 
 inquirer.prompt(role).then((response)=>{
     console.log(response);
+    if(response.userRole === "Manager"){
+        console.log("You Are a Manager");
+        inquirer.prompt(managerQuestions).then((response)=>{
+            
+        })
+    }
 })
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
