@@ -10,6 +10,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+//Questions user on their role in the company as well as their name, id #, and email
 const role = [
     {
     type: "list",
@@ -34,6 +35,7 @@ const role = [
     }
 ]
 
+//Question specific to managers
 const managerQuestions = [
     {
     type: "input",
@@ -42,6 +44,7 @@ const managerQuestions = [
     }
 ]
 
+//Question specific to engineers
 const engineerQuestions = [
     {
     type: "input",
@@ -50,6 +53,7 @@ const engineerQuestions = [
     }
 ]
 
+//Question specific to interns
 const internQuestions = [
     {
     type: "input",
@@ -58,6 +62,7 @@ const internQuestions = [
     }
 ]
 
+//Runs inquirer, asks additional question based on user's role in the company
 inquirer.prompt(role).then((response)=>{
     console.log(response);
     if(response.userRole === "Manager"){
@@ -79,6 +84,7 @@ inquirer.prompt(role).then((response)=>{
         })
     }
 })
+
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
