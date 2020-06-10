@@ -4,6 +4,7 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
+const employees = [];
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
@@ -68,19 +69,21 @@ inquirer.prompt(role).then((response)=>{
     if(response.userRole === "Manager"){
         console.log("You Are a Manager");
         inquirer.prompt(managerQuestions).then((response)=>{
-
+            console.log(response);
         })
     }
     if(response.userRole === "Engineer"){
         console.log("You are an Engineer");
-        inquirer.prompt(engineerQuestions).then((response)=>{
-            
+        inquirer.prompt(engineerQuestions).then(({userName, userId, userEmail, githubName})=>{
+            console.log(response);
+            employees.push(new Engineer(response.userName, response.userId, response.userEmail, githubName));
+            console.log(employees);
         })
     }
     if(response.userRole === "Intern"){
         console.log("You are an Intern");
         inquirer.prompt(internQuestions).then((response)=>{
-            
+            console.log(response);
         })
     }
 })
