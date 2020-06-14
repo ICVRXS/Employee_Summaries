@@ -70,7 +70,7 @@ inquirer.prompt(role).then((response)=>{
         console.log("You Are a Manager");
         inquirer.prompt(managerQuestions).then((response)=>{
             console.log(response);
-        })
+        });
     }
     if(response.userRole === "Engineer"){
         console.log("You are an Engineer");
@@ -78,15 +78,17 @@ inquirer.prompt(role).then((response)=>{
             console.log(response);
             employees.push(new Engineer(response.userName, response.userId, response.userEmail, githubName));
             console.log(employees);
-        })
+        });
     }
     if(response.userRole === "Intern"){
         console.log("You are an Intern");
-        inquirer.prompt(internQuestions).then((response)=>{
+        inquirer.prompt(internQuestions).then(({userName, userId, userEmail, internSchool})=>{
             console.log(response);
-        })
+            employees.push(new Intern(response.userName, response.userId, response.userEmail, internSchool));
+            console.log(employees);
+        });
     }
-})
+});
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
